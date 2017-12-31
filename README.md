@@ -10,3 +10,7 @@ training:
 ```
 python train.py -data data/para_quora -save_model quora-model -copy_attn -global_attention mlp -word_vec_size 128 -rnn_size 256 -layers 1 -encoder_type brnn -epochs 16 -seed 777 -batch_size 32 -max_grad_norm 2 -share_embeddings -gpuid 1
 ```
+
+paraphrasing:
+
+
