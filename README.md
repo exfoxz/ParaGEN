@@ -35,4 +35,4 @@ python translate.py -model models/wikianswers-model_acc_xxx_ppl_yyy_e2.pt -src p
 
 ### Paraphrasing the SQuAD training dataset
 
-python translate.py -model models/quora-model_acc_65.99_ppl_6.05_e14.pt -src squad_process/squad_train.qtns.input -output squad_process/para_gen.txt  -beam_size 10 -replace_unk -share_vocab -verbose -batch_siz 256 -gpu 0
+python translate.py -model models/quora-model_acc_65.99_ppl_6.05_e14.pt -src squad_process/squad_train.qtns.input -output squad_process/para_gen.txt  -beam_size 10 -replace_unk -share_vocab -verbose -batch_size 256 -gpu 2
