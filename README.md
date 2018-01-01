@@ -35,4 +35,14 @@ python translate.py -model models/wikianswers-model_acc_xxx_ppl_yyy_e2.pt -src p
 
 ### Paraphrasing the SQuAD training dataset
 
-python translate.py -model models/quora-model_acc_65.99_ppl_6.05_e14.pt -src squad_process/squad_train.qtns.input -output squad_process/para_gen.txt  -beam_size 10 -replace_unk -share_vocab -verbose -batch_size 256 -gpu 2
+#### split
+split -l 15000 squad_process/squad_train.qtns.input -d -a 1 squad_process/squad_train.qtns.input.split_ 
+
+python translate.py -model models/quora-model_acc_66.37_ppl_5.94_e14.pt -src squad_process/squad_train.qtns.input.split_0 -output squad_process/squad_train.qtns.para.split_0  -beam_size 10 -replace_unk -share_vocab -verbose -batch_size 1 -gpu 0
+python translate.py -model models/quora-model_acc_66.37_ppl_5.94_e14.pt -src squad_process/squad_train.qtns.input.split_1 -output squad_process/squad_train.qtns.para.split_1  -beam_size 10 -replace_unk -share_vocab -verbose -batch_size 1 -gpu 1
+python translate.py -model models/quora-model_acc_66.37_ppl_5.94_e14.pt -src squad_process/squad_train.qtns.input.split_2 -output squad_process/squad_train.qtns.para.split_2  -beam_size 10 -replace_unk -share_vocab -verbose -batch_size 1 -gpu 2
+python translate.py -model models/quora-model_acc_66.37_ppl_5.94_e14.pt -src squad_process/squad_train.qtns.input.split_3 -output squad_process/squad_train.qtns.para.split_3  -beam_size 10 -replace_unk -share_vocab -verbose -batch_size 1 -gpu 3
+python translate.py -model models/quora-model_acc_66.37_ppl_5.94_e14.pt -src squad_process/squad_train.qtns.input.split_4 -output squad_process/squad_train.qtns.para.split_4  -beam_size 10 -replace_unk -share_vocab -verbose -batch_size 1 -gpu 4
+python translate.py -model models/quora-model_acc_66.37_ppl_5.94_e14.pt -src squad_process/squad_train.qtns.input.split_5 -output squad_process/squad_train.qtns.para.split_5  -beam_size 10 -replace_unk -share_vocab -verbose -batch_size 1 -gpu 5
+
+cat  squad_process/squad_train.qtns.para.split_0 squad_process/squad_train.qtns.para.split_1 squad_process/squad_train.qtns.para.split_2 squad_process/squad_train.qtns.para.split_3 squad_process/squad_train.qtns.para.split_4 squad_process/squad_train.qtns.para.split_5 > squad_process/squad_train.qtns.para
