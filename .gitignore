@@ -1,3 +1,4 @@
+!nmt_data/wiki_de-en/preprocess.py
 # repo-specific stuff
 pred.txt
 multi-bleu.perl
