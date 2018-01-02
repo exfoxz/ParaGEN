@@ -1,5 +1,6 @@
 import nltk
 import sys
+import time
 output = ""
 
 original_en = "Wikipedia.de-en.en"
@@ -8,7 +9,7 @@ original_de = "Wikipedia.de-en.de"
 s1 =  1220000 # 0~1220000 for en-de training
 s2 =  1229381 # 1220000~1229381 for en-de validation
 s3 =  2449381 # 1229381~2449381 for de-en training
-s4 =  2449381 # 1229381~2459662 for de-en validation
+s4 =  2459662 # 1229381~2459662 for de-en validation
 
 
 def output_file(output_path, output):
@@ -26,12 +27,14 @@ def preprocess(original_path, lang = "english"):
         print('load corpus')
         text = fin.read()
         print('start tokenizing')
+        start_time = time.time()
         tknzed = []
         for line in text.split('\n'):
             line = " ".join(nltk.word_tokenize(line, language=lang))
-            tknzed.append(line+'\n')
+            tknzed.append(line)
             if len(tknzed) % 10000 == 0:
-                print((len(tknzed)+0.0)/s4*100,'%')
+                print((len(tknzed)+0.0)/s4*100, '%')
+                print("--- %s seconds ---" % (time.time() - start_time))
         print('end tokenizing')
 
         print('start slicing')

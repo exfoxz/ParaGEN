@@ -64,3 +64,17 @@ python preprocess.py de
 
 This parallel corpora has 2,459,662 sentence pairs. 
 We used fist half (1,229,381) for en-de and last half for de-en, each with 1,229,381 -> 1,220,000 for training, 9,381 for validation.
+
+#### 4.2. Training Translators 
+##### 4.2.1 Preprocessing 
+```
+python preprocess.py -train_src nmt_data/wiki_de-en/en_de_train.en -train_tgt nmt_data/wiki_de-en/en_de_train.de -valid_src nmt_data/wiki_de-en/en_de_val.en -valid_tgt nmt_data/wiki_de-en/en_de_val.de -save_data data/wiki_en_de -dynamic_dict -share_vocab
+python preprocess.py -train_src nmt_data/wiki_de-en/de_en_train.de -train_tgt nmt_data/wiki_de-en/de_en_train.en -valid_src nmt_data/wiki_de-en/de_en_val.de -valid_tgt nmt_data/wiki_de-en/de_en_val.en -save_data data/wiki_de_en -dynamic_dict -share_vocab
+```
+
+##### 4.2.2 Training 
+```
+python train.py -data data/wiki_en_de -save_model models/wiki_en_de -copy_attn -global_attention mlp -word_vec_size 256 -rnn_size 512 -layers 2 -encoder_type brnn -epochs 16 -seed 42 -batch_size 256 -max_grad_norm 2 -gpuid 6
+python train.py -data data/wiki_de_en -save_model models/wiki_de_en -copy_attn -global_attention mlp -word_vec_size 256 -rnn_size 512 -layers 2 -encoder_type brnn -epochs 16 -seed 42 -batch_size 256 -max_grad_norm 2 -gpuid 7
+```
+
