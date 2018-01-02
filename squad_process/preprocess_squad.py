@@ -22,5 +22,11 @@ def process_squad(load_f, output_path, output_path_input):
     fout.close()
     load_f_train.close()
 
+# real use
 load_f_train = open("train-v1.1.json", 'r', encoding='utf8')
 process_squad(load_f_train, output_path="squad_train.qtns", output_path_input = "squad_train.qtns.input")
+
+
+# test for para_questions
+# load_f_train = open("train-v1.1.para_qtns.json", 'r', encoding='utf8')
+# process_squad(load_f_train, output_path="tmp1.txt", output_path_input = "tmp2.txt")
