@@ -39,6 +39,7 @@ for i in data:
                 # assert para_dic[key][0] == " ".join(nltk.word_tokenize(z['question']))
                 new_z = z.copy()
                 new_z['question'] = para_dic[key][1]
+                # new_z['id'] = new_z['id'].reverse()
                 j['qas'].append(new_z)
             z_cnt = z_cnt + 1
         j_cnt = j_cnt + 1
