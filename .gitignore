@@ -11,7 +11,7 @@ multi-bleu.perl
 __pycache__/
 *.py[cod]
 *$py.class
-
+nmt_data/
 # C extensions
 *.so
 
