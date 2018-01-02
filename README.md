@@ -57,8 +57,10 @@ cd nmt_data
 wget http://opus.nlpl.eu/download.php?f=Wikipedia/de-en.txt.zip
 unzip de-en.txt.zip
 cd wiki_de-en
+
 python preprocess.py en
 python preprocess.py de
 ```
+
 This parallel corpora has 2,459,662 sentence pairs. 
 We used fist half (1,229,381) for en-de and last half for de-en, each with 1,229,381 -> 1,220,000 for training, 9,381 for validation.

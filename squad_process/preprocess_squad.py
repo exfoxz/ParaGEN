@@ -15,7 +15,7 @@ def process_squad(load_f, output_path, output_path_input):
             for z in j['qas']:
                 sent = " ".join(nltk.word_tokenize(z['question']))
                 fout_input.write(sent + '\n')
-                fout.write(str(i_cnt) + '-' + str(j_cnt) + '\t' + sent + '\n')
+                fout.write(str(i_cnt) + '-' + str(j_cnt) + '-' + str(z_cnt) + '\t' + sent + '\n')
                 z_cnt = z_cnt + 1
             j_cnt = j_cnt + 1
         i_cnt = i_cnt + 1
