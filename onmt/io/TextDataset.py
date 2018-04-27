@@ -128,6 +128,7 @@ class TextDataset(ONMTDatasetBase):
         with codecs.open(path, "r", "utf-8") as corpus_file:
             for i, line in enumerate(corpus_file):
                 line = line.strip().split()
+
                 if truncate:
                     line = line[:truncate]
 
@@ -174,8 +175,10 @@ class TextDataset(ONMTDatasetBase):
                                      pad_token=PAD_WORD)
 
         def make_src(data, _):
-            src_size = max([t.size(0) for t in data])
-            src_vocab_size = max([t.max() for t in data]) + 1
+            #src_size = max([t.size(0) for t in data])
+            # Sam: fix error of t.size(0) of 0D Tensor
+            src_size = max([t.size(0) for t in data if len(t) > 0])
+            src_vocab_size = max([t.max() for t in data if len(t) > 0]) + 1
             alignment = torch.zeros(src_size, len(data), src_vocab_size)
             for i, sent in enumerate(data):
                 for j, t in enumerate(sent):

@@ -1,6 +1,9 @@
 import nltk
 import sys
 import time
+
+# fix for Pyhon2.7 using with open with encoding utf8
+from io import open
 output = ""
 
 original_en = "Wikipedia.de-en.en"

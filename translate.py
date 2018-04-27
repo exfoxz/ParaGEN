@@ -24,7 +24,6 @@ opts.translate_opts(parser)
 
 opt = parser.parse_args()
 
-
 def main():
     dummy_parser = argparse.ArgumentParser(description='train.py')
     opts.model_opts(dummy_parser)

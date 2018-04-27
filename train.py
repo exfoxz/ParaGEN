@@ -145,6 +145,7 @@ def make_loss_compute(model, tgt_vocab, dataset, opt):
 def train_model(model, train_dataset, valid_dataset,
                 fields, optim, model_opt):
 
+    print("Training model")
     train_iter = make_train_data_iter(train_dataset, opt)
     valid_iter = make_valid_data_iter(valid_dataset, opt)
 

@@ -107,3 +107,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# trained models
+models/
+para_gen.txt	
